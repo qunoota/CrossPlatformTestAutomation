@@ -1,4 +1,4 @@
-package com.application.tests;
+package com.application.tests.mobile;
 import Base.TestBase;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

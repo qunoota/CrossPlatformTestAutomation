@@ -2,17 +2,37 @@
 <suite name="TestSuite">
     <test name="AndroidTests">
         <classes>
-            <class name="com.application.tests.AndroidTest"/>
+            <class name="com.application.tests.mobile.AndroidTest"/>
         </classes>
     </test>
     <test name="iOSTests">
         <classes>
-            <class name="com.application.tests.iOSTest"/>
+            <class name="com.application.tests.mobile.iOSTest"/>
         </classes>
     </test>
     <test name="LoginPageTests">
         <classes>
-            <class name="com.application.tests.LoginPageTest"/>
+            <class name="com.application.tests.web.LoginPageTest"/>
+        </classes>
+    </test>
+    <test name="APITests">
+        <classes>
+            <class name="com.application.tests.api.TestsOnLocalAPI"/>
+        </classes>
+    </test>
+    <test name="Chrome">
+        <classes>
+            <class name="com.application.tests.web.WebVisitorIdChrome"/>
+        </classes>
+    </test>
+    <test name="Edge">
+        <classes>
+            <class name="com.application.tests.web.WebVisitorIdEdge"/>
+        </classes>
+    </test>
+    <test name="BrowserStack Safari">
+        <classes>
+            <class name="com.application.tests.web.WebVisitorIdBStackSafari"/>
         </classes>
     </test>
 </suite>

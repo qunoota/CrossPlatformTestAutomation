@@ -1,14 +1,20 @@
 package util;
-import java.io.BufferedReader;
+
+import java.io.*;
 import java.util.Properties;
-import java.io.FileReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 public class configReader {
     public final Properties prop;
+
     public configReader() {
         BufferedReader reader;
-        String propertyFilePath = "C:/Users/qunoot.ahmed/IdeaProjects/CrossPlatformAutomation/src/main/resources/config.properties";
+        // Current working directory
+        String currentDir = System.getProperty("user.dir");
+        String relativePath = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "config.properties";
+        String fullPath = currentDir + File.separator + relativePath;
+
+        // Full path of property file
+        File propertyFilePath = new File(fullPath);
 
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
@@ -25,7 +31,7 @@ public class configReader {
     }
 
     public String getBrowserName() {
-        String browserName = prop.getProperty("browser");
+        String browserName = prop.getProperty("BROWSER");
         if (browserName != null)
             return browserName;
         else throw new RuntimeException("Browser name not found");
@@ -57,5 +63,19 @@ public class configReader {
         if (appURL != null)
             return appURL;
         else throw new RuntimeException("App URL not found");
+    }
+
+    public String getExcelPath() {
+        String excelPath = prop.getProperty("EXCEL_PATH");
+        if (excelPath != null)
+            return excelPath;
+        else throw new RuntimeException("Excel path not found");
+    }
+
+    public String getBrowserStackURL() {
+        String bsURL = prop.getProperty("BROWSERSTACK_URL");
+        if (bsURL != null)
+            return bsURL;
+        else throw new RuntimeException("Browserstack URL not found");
     }
 }

@@ -19,7 +19,7 @@ public class TestBase {
     public static void webInitialization() {
         confReader = new configReader();
         prop = confReader.prop;
-        String browserName = prop.getProperty("browser");
+        String browserName = prop.getProperty("BROWSER");
         if (browserName.equals("CHROME")) {
             driver = new ChromeDriver();
         }
@@ -55,4 +55,3 @@ public class TestBase {
         return new RemoteWebDriver(BrowserStackConfigFactory.getConfig().browserStackURL(), options);
     }
 }
-
