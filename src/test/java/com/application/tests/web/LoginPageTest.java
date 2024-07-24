@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.openqa.selenium.Dimension;
 import util.excelReader;
+import util.TestData;
 
 public class LoginPageTest extends TestBase {
     excelReader excReader;
@@ -36,10 +37,14 @@ public class LoginPageTest extends TestBase {
         Dimension dimension = new Dimension(1080, 750);
         driver.manage().window().setSize(dimension);
  //       profilePage = loginPage.login("John.alan98", "Test*123");
-        excReader = new excelReader();
-        excReader.readExcelFile();
-        String email = excReader.GetCellValue(1, 0);
-        String password = excReader.GetCellValue(1, 1);
+//        excReader = new excelReader();
+//        excReader.readExcelFile();
+//        String email = excReader.GetCellValue(1, 0);
+//        String password = excReader.GetCellValue(1, 1);
+//        profilePage = loginPage.login(email, password);
+        TestData testData = new TestData();
+        String email = testData.getUsername();
+        String password = testData.getPassword();
         profilePage = loginPage.login(email, password);
     }
 

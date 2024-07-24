@@ -1,13 +1,14 @@
 package Base;
-import com.application.config.configFactory;
-import converters.BrowserStackConfigFactory;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import util.configReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 public class TestBase {
@@ -20,11 +21,25 @@ public class TestBase {
         confReader = new configReader();
         prop = confReader.prop;
         String browserName = prop.getProperty("BROWSER");
-        if (browserName.equals("CHROME")) {
-            driver = new ChromeDriver();
-        }
-        else if (browserName.equals("EDGE")) {
-            driver = new EdgeDriver();
+
+//        if (browserName.equals("CHROME")) {
+//            driver = new ChromeDriver();
+//        }
+//        else if (browserName.equals("EDGE")) {
+//            driver = new EdgeDriver();
+//        }
+        switch (browserName.toUpperCase()) {
+            case "CHROME":
+                driver = new ChromeDriver();
+                break;
+            case "EDGE":
+                driver = new EdgeDriver();
+                break;
+            case "FIREFOX":
+                driver = new FirefoxDriver();
+                break;
+            default:
+                throw new IllegalArgumentException("Browser not supported: " + browserName);
         }
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
@@ -32,14 +47,15 @@ public class TestBase {
     }
 
     public static WebDriver initializeAndroidDriver() {
+        confReader = new configReader();
+        prop = confReader.prop;
         try {
-            confReader = new configReader();
             UiAutomator2Options options = new UiAutomator2Options();
             options.setPlatformName(confReader.getPlatformName());
             options.setAutomationName(confReader.getAutomationName());
             options.setDeviceName(confReader.getDeviceName());
             options.setApp(confReader.getAppURL());
-            return new RemoteWebDriver(configFactory.getConfig().localAppiumServerURL(), options);
+            return new RemoteWebDriver(new URL(confReader.getLocalAppiumServerURL()), options);
         } catch (Exception exp) {
             exp.printStackTrace();
             return null;
@@ -47,11 +63,15 @@ public class TestBase {
     }
 
     public static WebDriver initializeBrowserStack() {
-        System.out.println("Browserstack URL: " + BrowserStackConfigFactory.getConfig().browserStackURL());
+        confReader = new configReader();
         XCUITestOptions options = new XCUITestOptions();
         options.setCapability("browserName", "Safari");
         options.setCapability("platformName", "MAC");
         options.setCapability("deviceName", "iPhone 11 Pro");
-        return new RemoteWebDriver(BrowserStackConfigFactory.getConfig().browserStackURL(), options);
+        try {
+            return new RemoteWebDriver(new URL(confReader.getBrowserStackURL()), options);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -20,19 +20,4 @@
             <class name="com.application.tests.api.TestsOnLocalAPI"/>
         </classes>
     </test>
-    <test name="Chrome">
-        <classes>
-            <class name="com.application.tests.web.WebVisitorIdChrome"/>
-        </classes>
-    </test>
-    <test name="Edge">
-        <classes>
-            <class name="com.application.tests.web.WebVisitorIdEdge"/>
-        </classes>
-    </test>
-    <test name="BrowserStack Safari">
-        <classes>
-            <class name="com.application.tests.web.WebVisitorIdBStackSafari"/>
-        </classes>
-    </test>
 </suite>

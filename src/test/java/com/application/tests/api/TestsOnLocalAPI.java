@@ -1,61 +1,77 @@
 package com.application.tests.api;
-
+import com.application.api.FakeDataUtil;
 import com.google.gson.JsonObject;
-import com.github.javafaker.Faker;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.*;
 
 public class TestsOnLocalAPI {
+    String userId;
+    String fName = FakeDataUtil.getFirstName();
+    String lName = FakeDataUtil.getLastName();
+    int id = FakeDataUtil.getUniqueId();
 
-    @Test
+    @Test(priority = 1)
     public void get() {
         baseURI = "http://localhost:3000";
         given().get("/users").then().statusCode(200).log().all();
     }
 
-    @Test
+    @Test(priority = 2)
     public void post() {
-        Faker faker = new Faker();
-        String fName = faker.name().firstName();
-        String lName = faker.name().lastName();
-
         JsonObject request = new JsonObject();
-        request.addProperty("firstName", fName); // Use Faker-generated first name
-        request.addProperty("lastName", lName); // Use Faker-generated last name
+        request.addProperty("id", id);
+        request.addProperty("firstName", fName);
+        request.addProperty("lastName", lName);
         request.addProperty("subjectId", 1);
 
         baseURI = "http://localhost:3000";
-
-        given()
+        Response response =  given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .body(request.toString()) // Convert JsonObject to string
+                .body(request.toString())
                 .when()
                 .post("/users")
                 .then()
-                .statusCode(201);
+                .statusCode(201)
+                .extract().response();
+        userId = response.jsonPath().getString("id");
     }
 
-    @Test
+    @Test(priority = 3)
     public void put() {
-        Faker faker = new Faker();
-        String fName = faker.name().firstName();
-        String lName = faker.name().lastName();
-
         JsonObject request = new JsonObject();
+        request.addProperty("id", id);
         request.addProperty("firstName", fName);
         request.addProperty("lastName", lName);
         request.addProperty("subjectId", 2);
 
         baseURI = "http://localhost:3000";
+         given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .body(request.toString())
+                .when()
+                .put("/users/" + userId)
+                .then()
+                .statusCode(200);
+    }
 
+    @Test(priority = 4)
+    public void delete(){
+        JsonObject request = new JsonObject();
+        request.addProperty("id", id);
+        request.addProperty("firstName", fName);
+        request.addProperty("lastName", lName);
+        request.addProperty("subjectId", 2);
+
+        baseURI = "http://localhost:3000";
         given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .body(request.toString()) // Convert JsonObject to string
                 .when()
-                .put("/users/4")
+                .delete("/users/" + userId)
                 .then()
                 .statusCode(200);
     }

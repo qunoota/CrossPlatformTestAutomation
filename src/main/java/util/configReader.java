@@ -72,10 +72,24 @@ public class configReader {
         else throw new RuntimeException("Excel path not found");
     }
 
+    public String getTestDataPath() {
+        String excelPath = prop.getProperty("TEST_DATA_JSON");
+        if (excelPath != null)
+            return excelPath;
+        else throw new RuntimeException("Test data json file not found");
+    }
+
     public String getBrowserStackURL() {
         String bsURL = prop.getProperty("BROWSERSTACK_URL");
         if (bsURL != null)
             return bsURL;
         else throw new RuntimeException("Browserstack URL not found");
+    }
+
+    public String getLocalAppiumServerURL() {
+        String appiumURL = prop.getProperty("LOCAL_APPIUM_SERVER_URL");
+        if (appiumURL != null)
+            return appiumURL;
+        else throw new RuntimeException("Appium Server URL not found");
     }
 }

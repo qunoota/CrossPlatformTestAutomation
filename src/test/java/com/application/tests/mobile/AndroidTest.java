@@ -10,7 +10,6 @@ public class AndroidTest extends TestBase {
     ProductsPage productsPage;
     @BeforeMethod
     public void setup() {
-     //   initializeAndroidDriver();
         productsPage = new ProductsPage();
     }
 
