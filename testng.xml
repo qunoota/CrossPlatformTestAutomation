@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestSuite">
-    <test name="AndroidTests">
+<suite name="TestSuite" thread-count="1" parallel="tests" verbose="3">
+    <test name="AndroidTests" parallel="methods" thread-count="1">
+        <parameter name="browser" value="chrome" />
         <classes>
             <class name="com.application.tests.mobile.AndroidTest"/>
         </classes>

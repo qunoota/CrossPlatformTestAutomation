@@ -10,32 +10,32 @@ import util.configReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TestBase {
 
     public static WebDriver driver;
     public static Properties prop;
     public static configReader confReader;
+    private static final Logger logger = LogManager.getLogger(TestBase.class);
 
     public static void webInitialization() {
         confReader = new configReader();
         prop = confReader.prop;
         String browserName = prop.getProperty("BROWSER");
 
-//        if (browserName.equals("CHROME")) {
-//            driver = new ChromeDriver();
-//        }
-//        else if (browserName.equals("EDGE")) {
-//            driver = new EdgeDriver();
-//        }
         switch (browserName.toUpperCase()) {
             case "CHROME":
+                logger.info("Browser = Chrome");
                 driver = new ChromeDriver();
                 break;
             case "EDGE":
+                logger.info("Browser = Edge");
                 driver = new EdgeDriver();
                 break;
             case "FIREFOX":
+                logger.info("Browser = Firefox");
                 driver = new FirefoxDriver();
                 break;
             default:
@@ -55,6 +55,7 @@ public class TestBase {
             options.setAutomationName(confReader.getAutomationName());
             options.setDeviceName(confReader.getDeviceName());
             options.setApp(confReader.getAppURL());
+            logger.info("Driver initialization successful");
             return new RemoteWebDriver(new URL(confReader.getLocalAppiumServerURL()), options);
         } catch (Exception exp) {
             exp.printStackTrace();
@@ -69,9 +70,10 @@ public class TestBase {
         options.setCapability("platformName", "MAC");
         options.setCapability("deviceName", "iPhone 11 Pro");
         try {
-            return new RemoteWebDriver(new URL(confReader.getBrowserStackURL()), options);
+            WebDriver driver = new RemoteWebDriver(new URL(confReader.getBrowserStackURL()), options);
+            return driver;
         } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+            throw new IllegalStateException("Failed to initialize BrowserStack driver due to malformed URL", e);
         }
     }
 }

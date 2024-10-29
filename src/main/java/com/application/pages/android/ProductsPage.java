@@ -1,11 +1,13 @@
 package com.application.pages.android;
 
-import Base.TestBase;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProductsPage extends TestBase {
+import static Base.TestBase.initializeAndroidDriver;
+
+public class ProductsPage {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc='container header']/android.widget.TextView")
     WebElement productPageHeading;
 
@@ -15,8 +17,8 @@ public class ProductsPage extends TestBase {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"container header\"]/android.widget.TextView")
     WebElement backpack;
 
-    public ProductsPage() {
-        PageFactory.initElements(initializeAndroidDriver(), this);
+    public ProductsPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
     }
 
     public String validateProductPageHeading() {
