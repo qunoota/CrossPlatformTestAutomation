@@ -25,25 +25,28 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
-# Step to set ANDROID_HOME and update PATH to include Android SDK tools
+# Set ANDROID_HOME explicitly
 - script: |
-    echo "Setting up Android SDK environment variables..."
-    setx ANDROID_HOME "C:\Users\qunoot.ahmed\Documents\Android" /M
-    setx PATH "%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;%ANDROID_HOME%\tools\bin;%PATH%" /M
-  displayName: 'Setup Android SDK Environment Variables Globally'
+    echo "Setting ANDROID_HOME..."
+    set ANDROID_HOME=C:\Users\qunoot.ahmed\Documents\Android
+    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%PATH%
+  displayName: 'Set ANDROID_HOME and PATH'
 
-# Restart shell session to apply environment variables
-- powershell: |
-    Write-Host "Restarting shell session to apply environment variables"
-    $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
-  displayName: 'Reload Environment Variables'
-
-# Step to start the Android emulator
+# Confirm environment variables and paths
 - script: |
-    echo "Starting Android emulator..."
-    emulator -avd Pixel_2_API_33 -no-audio -no-window &
-    adb wait-for-device
-  displayName: 'Start Android Emulator'
+    echo "ANDROID_HOME is set to %ANDROID_HOME%"
+    echo "PATH is set to %PATH%"
+    echo "Checking if emulator and adb are accessible"
+    dir "%ANDROID_HOME%\emulator"
+    dir "%ANDROID_HOME%\platform-tools"
+  displayName: 'Confirm Environment Setup'
+
+# Start Android Emulator with Full Path
+- script: |
+    echo "Starting Android emulator with full path..."
+    "%ANDROID_HOME%\emulator\emulator" -avd Pixel_2_API_33 -no-audio -no-window &
+    "%ANDROID_HOME%\platform-tools\adb" wait-for-device
+  displayName: 'Start Android Emulator with Full Path'
 
 # Maven build and test
 - task: Maven@3
