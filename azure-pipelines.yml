@@ -41,16 +41,16 @@ steps:
     dir "%ANDROID_HOME%\platform-tools"
   displayName: 'Confirm Environment Setup'
 
-# Install ARM-based system image for Android 33 if not available
+# Install x86_64 system image for Android 33
 - script: |
-    echo "Installing ARM-based system image for Android 33..."
-    echo y | "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "system-images;android-33;google_apis_playstore;arm64-v8a"
-  displayName: 'Install ARM System Image'
+    echo "Installing x86_64 system image for Android 33..."
+    echo y | "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "system-images;android-33;google_apis_playstore;x86_64"
+  displayName: 'Install x86_64 System Image'
 
-# Create AVD Pixel_2_API_33 without checking if it exists
+# Create AVD Pixel_2_API_33 with x86_64 system image
 - script: |
-    echo "Creating AVD Pixel_2_API_33 with ARM-based system image..."
-    "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;arm64-v8a" --device "pixel"
+    echo "Creating AVD Pixel_2_API_33 with x86_64 system image..."
+    "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;x86_64" --device "pixel"
   displayName: 'Create AVD Pixel_2_API_33'
 
 # Start Android Emulator with Full Path
