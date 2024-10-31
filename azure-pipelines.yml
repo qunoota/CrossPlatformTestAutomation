@@ -25,6 +25,13 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
+# Step to start the Android emulator
+- script: |
+    echo "Starting Android emulator..."
+    cd $HOME/Android/Sdk/emulator
+    emulator -avd Pixel_2_API_33 -no-audio -no-window &  # Start your AVD
+    timeout /t 60  # Wait for 60 seconds to allow the emulator to start
+  displayName: 'Start Android Emulator'
 
 # Maven build and test
 - task: Maven@3
