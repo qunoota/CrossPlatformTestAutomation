@@ -57,8 +57,10 @@ steps:
 - script: |
     echo "Starting Android emulator with full path..."
     start /B "%ANDROID_HOME%\emulator\emulator" -avd Pixel_2_API_33 -no-audio -no-window
-    "%ANDROID_HOME%\platform-tools\adb" wait-for-device
+    TIMEOUT /T 60
+    "%ANDROID_HOME%\platform-tools\adb" wait-for-device || (echo "Emulator did not start in time" && exit 1)
   displayName: 'Start Android Emulator with Full Path'
+
 
 # Wait for Emulator to Boot
 - script: |
