@@ -1,7 +1,5 @@
 # Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+# Build Java project and run tests with Apache Maven.
 
 trigger:
   branches:
@@ -12,22 +10,40 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+# Step to install Node.js to support JSON server
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'  # Use a compatible Node.js version
+  displayName: 'Install Node.js'
+
+# Step to install JSON Server globally
+- script: npm install -g json-server
+  displayName: 'Install JSON Server'
+
+# Step to start JSON Server with db.json in the main directory
+- script: |
+    json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000 &
+  displayName: 'Start JSON Server'
+
+# Maven build and test
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx1024m'  # Optional: Set memory limit for Maven
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '17'  # Matches the Java version in our pom.xml
+    jdkVersionOption: '17'  # Matches the Java version in your pom.xml
     jdkArchitectureOption: 'x64'
     goals: 'clean install'
   displayName: 'Build with Maven'
 
+# Publish test results
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '**/TEST-*.xml'  # Test result files from Maven Surefire plugin
     testRunTitle: 'Java Client Tests'
   displayName: 'Publish Test Results'
 
+# Publish build artifacts
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)/target'  # Artifacts from the build
