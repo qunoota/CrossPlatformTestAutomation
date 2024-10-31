@@ -1,0 +1,182 @@
+{
+  "users": [
+    {
+      "id": "2",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "subjectId": 2
+    },
+    {
+      "id": "3",
+      "firstName": "Bob",
+      "lastName": "Williams",
+      "subjectId": 3
+    },
+    {
+      "id": "5",
+      "firstName": "Emma",
+      "lastName": "Jones",
+      "subjectId": 5
+    },
+    {
+      "id": "6",
+      "firstName": "Frank",
+      "lastName": "Davis",
+      "subjectId": 1
+    },
+    {
+      "id": "7",
+      "firstName": "Grace",
+      "lastName": "Miller",
+      "subjectId": 2
+    },
+    {
+      "id": "8",
+      "firstName": "Henry",
+      "lastName": "Wilson",
+      "subjectId": 3
+    },
+    {
+      "id": "9",
+      "firstName": "Ivy",
+      "lastName": "Taylor",
+      "subjectId": 4
+    },
+    {
+      "id": "10",
+      "firstName": "Jack",
+      "lastName": "Anderson",
+      "subjectId": 5
+    },
+    {
+      "id": "33a3",
+      "firstName": "Qunoot",
+      "lastName": "Ahmed",
+      "subjectId": 1
+    },
+    {
+      "id": "8877",
+      "firstName": "Julia",
+      "lastName": "Roberts",
+      "subjectId": 1
+    },
+    {
+      "id": "cfef",
+      "firstName": "Nancee",
+      "lastName": "Klein",
+      "subjectId": 1
+    },
+    {
+      "id": "d7a2",
+      "firstName": "Howard",
+      "lastName": "Keeling",
+      "subjectId": 1
+    },
+    {
+      "id": "6781",
+      "firstName": "Eric",
+      "lastName": "Bernhard",
+      "subjectId": 1
+    },
+    {
+      "id": "ed48",
+      "firstName": "Kenyetta",
+      "lastName": "Durgan",
+      "subjectId": 1
+    },
+    {
+      "id": "e2bc",
+      "firstName": "Jung",
+      "lastName": "Schoen",
+      "subjectId": 1
+    },
+    {
+      "id": "aff3",
+      "firstName": "Brendon",
+      "lastName": "Bergstrom",
+      "subjectId": 1
+    },
+    {
+      "id": "2a3f",
+      "firstName": "Graham",
+      "lastName": "Schiller",
+      "subjectId": 1
+    },
+    {
+      "id": "0828",
+      "firstName": "Kyle",
+      "lastName": "Yost",
+      "subjectId": 1
+    },
+    {
+      "id": "b149",
+      "firstName": "Delbert",
+      "lastName": "Fay",
+      "subjectId": 1
+    },
+    {
+      "id": "0a9d",
+      "firstName": "Viva",
+      "lastName": "Rau",
+      "subjectId": 1
+    },
+    {
+      "id": "42b5",
+      "firstName": "Lou",
+      "lastName": "Welch",
+      "subjectId": 1
+    },
+    {
+      "id": "1",
+      "firstName": "Holli",
+      "lastName": "Homenick",
+      "subjectId": 1
+    },
+    {
+      "id": 1,
+      "firstName": "Keisha",
+      "lastName": "Gleichner",
+      "subjectId": 1
+    },
+    {
+      "id": 1,
+      "firstName": "Ezra",
+      "lastName": "Frami",
+      "subjectId": 1
+    },
+    {
+      "id": 1,
+      "firstName": "Lecia",
+      "lastName": "Schroeder",
+      "subjectId": 1
+    },
+    {
+      "id": 1,
+      "firstName": "Rosamond",
+      "lastName": "White",
+      "subjectId": 1
+    }
+  ],
+  "subjects": [
+    {
+      "id": "1",
+      "name": "Automation"
+    },
+    {
+      "id": "2",
+      "name": "Machine Learning"
+    },
+    {
+      "id": "3",
+      "name": "Web Development"
+    },
+    {
+      "id": "4",
+      "name": "Data Science"
+    },
+    {
+      "id": "5",
+      "name": "Cybersecurity"
+    }
+  ]
+}
