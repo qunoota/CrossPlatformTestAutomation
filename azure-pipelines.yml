@@ -20,10 +20,11 @@ steps:
 - script: npm install -g json-server
   displayName: 'Install JSON Server'
 
-# Step to start JSON Server with db.json in the main directory
+# Step to start JSON Server in the background on Windows
 - script: |
-    json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000 &
+    start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
+
 
 # Maven build and test
 - task: Maven@3
