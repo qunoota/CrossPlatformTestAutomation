@@ -25,12 +25,18 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
-# Step to set up Android SDK environment variables
+# Step to set ANDROID_HOME and update PATH to include Android SDK tools
 - script: |
     echo "Setting up Android SDK environment variables..."
-    set ANDROID_HOME="C:\Users\qunoot.ahmed\Documents\Android"
-    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;%ANDROID_HOME%\tools\bin;%PATH%
-  displayName: 'Setup Android SDK Environment Variables'
+    setx ANDROID_HOME "C:\Users\qunoot.ahmed\Documents\Android" /M
+    setx PATH "%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;%ANDROID_HOME%\tools\bin;%PATH%" /M
+  displayName: 'Setup Android SDK Environment Variables Globally'
+
+# Restart shell session to apply environment variables
+- powershell: |
+    Write-Host "Restarting shell session to apply environment variables"
+    $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
+  displayName: 'Reload Environment Variables'
 
 # Step to start the Android emulator
 - script: |
