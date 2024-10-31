@@ -41,6 +41,18 @@ steps:
     dir "%ANDROID_HOME%\platform-tools"
   displayName: 'Confirm Environment Setup'
 
+# Install system image and create AVD if not available
+- script: |
+    echo "Checking if AVD Pixel_2_API_33 exists..."
+    "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" list avd
+    if not exist "%USERPROFILE%\.android\avd\Pixel_2_API_33.avd" (
+      echo "AVD Pixel_2_API_33 not found, creating AVD..."
+      echo no | "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;x86_64" --device "pixel"
+    ) else (
+      echo "AVD Pixel_2_API_33 already exists."
+    )
+  displayName: 'Create AVD Pixel_2_API_33 if Not Exists'
+
 # Start Android Emulator with Full Path
 - script: |
     echo "Starting Android emulator with full path..."
