@@ -25,12 +25,19 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
+# Step to set up the Android SDK path
+- script: |
+    set ANDROID_HOME=C:\Users\qunoot.ahmed\Documents\Android
+    set PATH=%PATH%;%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools
+    echo "ANDROID_HOME set to %ANDROID_HOME%"
+    echo "PATH set to %PATH%"
+  displayName: 'Set Android SDK Environment Variables'
+
 # Step to start the Android emulator
 - script: |
     echo "Starting Android emulator..."
-    cd $HOME/Android/Sdk/emulator
-    emulator -avd Pixel_2_API_33 -no-audio -no-window &  # Start your AVD
-    timeout /t 60  # Wait for 60 seconds to allow the emulator to start
+    emulator -avd Pixel_2_API_33 -no-audio -no-window &
+    adb wait-for-device
   displayName: 'Start Android Emulator'
 
 # Maven build and test
