@@ -25,33 +25,32 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
-# Set ANDROID_HOME explicitly
+# Set ANDROID_HOME and ANDROID_AVD_HOME explicitly
 - script: |
-    echo "Setting ANDROID_HOME..."
+    echo "Setting ANDROID_HOME and AVD paths..."
     set ANDROID_HOME=C:\Users\qunoot.ahmed\Documents\Android
-    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%PATH%
-  displayName: 'Set ANDROID_HOME and PATH'
+    set ANDROID_AVD_HOME=%USERPROFILE%\.android\avd
+    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\cmdline-tools\latest\bin;%PATH%
+  displayName: 'Set ANDROID_HOME, ANDROID_AVD_HOME, and PATH'
 
 # Confirm environment variables and paths
 - script: |
     echo "ANDROID_HOME is set to %ANDROID_HOME%"
+    echo "ANDROID_AVD_HOME is set to %ANDROID_AVD_HOME%"
     echo "PATH is set to %PATH%"
-    echo "Checking if emulator and adb are accessible"
+    echo "Checking if emulator, adb, and avdmanager are accessible"
     dir "%ANDROID_HOME%\emulator"
     dir "%ANDROID_HOME%\platform-tools"
+    dir "%ANDROID_HOME%\cmdline-tools\latest\bin"
   displayName: 'Confirm Environment Setup'
 
-# Install system image and create AVD if not available
+# Install system image and create AVD
 - script: |
-    echo "Checking if AVD Pixel_2_API_33 exists..."
-    "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" list avd
-    if not exist "%USERPROFILE%\.android\avd\Pixel_2_API_33.avd" (
-      echo "AVD Pixel_2_API_33 not found, creating AVD..."
-      echo no | "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;x86_64" --device "pixel"
-    ) else (
-      echo "AVD Pixel_2_API_33 already exists."
-    )
-  displayName: 'Create AVD Pixel_2_API_33 if Not Exists'
+    echo "Installing required system image and creating AVD..."
+    echo no | "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "system-images;android-33;google_apis_playstore;x86_64"
+    echo "Creating AVD Pixel_2_API_33..."
+    echo no | "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;x86_64" --device "pixel"
+  displayName: 'Install System Image and Create AVD'
 
 # Start Android Emulator with Full Path
 - script: |
