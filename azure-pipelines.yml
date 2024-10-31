@@ -50,15 +50,22 @@ steps:
 # Create AVD Pixel_2_API_33 with x86_64 system image
 - script: |
     echo "Creating AVD Pixel_2_API_33 with x86_64 system image..."
-    "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;x86_64" --device "pixel"
+    "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;x86_64" --device "pixel" --force
   displayName: 'Create AVD Pixel_2_API_33'
 
 # Start Android Emulator with Full Path
 - script: |
     echo "Starting Android emulator with full path..."
-    "%ANDROID_HOME%\emulator\emulator" -avd Pixel_2_API_33 -no-audio -no-window &
+    start /B "%ANDROID_HOME%\emulator\emulator" -avd Pixel_2_API_33 -no-audio -no-window
     "%ANDROID_HOME%\platform-tools\adb" wait-for-device
   displayName: 'Start Android Emulator with Full Path'
+
+# Wait for Emulator to Boot
+- script: |
+    echo "Waiting for the emulator to boot..."
+    adb wait-for-device
+    adb shell input keyevent 82  # Unlock screen
+  displayName: 'Wait for Emulator Boot'
 
 # Maven build and test
 - task: Maven@3
@@ -85,3 +92,9 @@ steps:
     artifactName: 'java-client-automation-artifacts'
     publishLocation: 'pipeline'
   displayName: 'Publish Build Artifacts'
+
+# Shutdown emulator
+- script: |
+    echo "Shutting down emulator..."
+    adb emu kill
+  displayName: 'Shutdown Emulator'
