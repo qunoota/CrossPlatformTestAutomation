@@ -25,13 +25,12 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
-# Step to set up the Android SDK path
+# Step to set up Android SDK environment variables
 - script: |
-    set ANDROID_HOME=C:\Users\qunoot.ahmed\Documents\Android
-    set PATH=%PATH%;%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools
-    echo "ANDROID_HOME set to %ANDROID_HOME%"
-    echo "PATH set to %PATH%"
-  displayName: 'Set Android SDK Environment Variables'
+    echo "Setting up Android SDK environment variables..."
+    set ANDROID_HOME="C:\Users\qunoot.ahmed\Documents\Android"
+    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\tools;%ANDROID_HOME%\tools\bin;%PATH%
+  displayName: 'Setup Android SDK Environment Variables'
 
 # Step to start the Android emulator
 - script: |
