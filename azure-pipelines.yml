@@ -29,7 +29,7 @@ steps:
 - script: |
     echo "Setting ANDROID_HOME..."
     set ANDROID_HOME=C:\Users\qunoot.ahmed\Documents\Android
-    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%PATH%
+    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\cmdline-tools\latest\bin;%PATH%
   displayName: 'Set ANDROID_HOME and PATH'
 
 # Confirm environment variables and paths
@@ -41,7 +41,13 @@ steps:
     dir "%ANDROID_HOME%\platform-tools"
   displayName: 'Confirm Environment Setup'
 
-# Install system image and create AVD
+# Install ARM-based system image for Android 33 if not available
+- script: |
+    echo "Installing ARM-based system image for Android 33..."
+    echo y | "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "system-images;android-33;google_apis_playstore;arm64-v8a"
+  displayName: 'Install ARM System Image'
+
+# Create AVD Pixel_2_API_33 without checking if it exists
 - script: |
     echo "Creating AVD Pixel_2_API_33 with ARM-based system image..."
     "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;arm64-v8a" --device "pixel"
