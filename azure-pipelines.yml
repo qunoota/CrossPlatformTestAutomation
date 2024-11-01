@@ -23,7 +23,6 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
-# Maven build and test
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -32,8 +31,8 @@ steps:
     jdkVersionOption: '17'
     jdkArchitectureOption: 'x64'
     goals: 'clean install'
-    options: '-Dtest=!AndroidTest'  # Skips the AndroidTest.java file
-  displayName: 'Build with Maven (Exclude AndroidTest.java)'
+    options: '-Dsurefire.suiteXmlFiles=testng.xml -Dtest=!com.application.tests.mobile.AndroidTest -DfailIfNoTests=false'
+  displayName: 'Build with Maven (Exclude AndroidTest)'
 
 # Publish test results
 - task: PublishTestResults@2
@@ -49,9 +48,3 @@ steps:
     artifactName: 'java-client-automation-artifacts'
     publishLocation: 'pipeline'
   displayName: 'Publish Build Artifacts'
-
-# Shutdown emulator
-- script: |
-    echo "Shutting down emulator..."
-    adb emu kill
-  displayName: 'Shutdown Emulator'
