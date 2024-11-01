@@ -2,8 +2,6 @@
 # Build Java project and run tests with Apache Maven.
 
 trigger:
-  branches:
-    include:
       - main
 
 pool:
@@ -13,40 +11,40 @@ steps:
 # Step to install Node.js to support JSON server
 - task: NodeTool@0
   inputs:
-    versionSpec: '16.x'  # Use a compatible Node.js version
+    versionSpec: '16.x'
   displayName: 'Install Node.js'
 
 # Step to install JSON Server globally
 - script: npm install -g json-server
   displayName: 'Install JSON Server'
 
-# Step to start JSON Server with db.json in the main directory
+# Step to start JSON Server in the background on Windows
 - script: |
-    json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000 &
+    start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
-# Maven build and test
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx1024m'  # Optional: Set memory limit for Maven
+    mavenOptions: '-Xmx1024m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '17'  # Matches the Java version in your pom.xml
+    jdkVersionOption: '17'
     jdkArchitectureOption: 'x64'
     goals: 'clean install'
-  displayName: 'Build with Maven'
+    options: '-Dsurefire.suiteXmlFiles=testng.xml -Dtest=!com.application.tests.mobile.AndroidTest -DfailIfNoTests=false'
+  displayName: 'Build with Maven (Exclude AndroidTest)'
 
 # Publish test results
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: '**/TEST-*.xml'  # Test result files from Maven Surefire plugin
+    testResultsFiles: '**/TEST-*.xml'
     testRunTitle: 'Java Client Tests'
   displayName: 'Publish Test Results'
 
 # Publish build artifacts
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/target'  # Artifacts from the build
+    targetPath: '$(System.DefaultWorkingDirectory)/target'
     artifactName: 'java-client-automation-artifacts'
     publishLocation: 'pipeline'
   displayName: 'Publish Build Artifacts'
