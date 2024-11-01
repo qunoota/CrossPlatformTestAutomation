@@ -34,17 +34,9 @@ steps:
     options: '-Dsurefire.suiteXmlFiles=testng.xml -Dtest=!com.application.tests.mobile.AndroidTest -DfailIfNoTests=false'
   displayName: 'Build with Maven (Exclude AndroidTest)'
 
-# Publish test results
+# Publish JUnit Test Results
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: '**/TEST-*.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/target/surefire-reports/TEST-*.xml'
     testRunTitle: 'Java Client Tests'
-  displayName: 'Publish Test Results'
-
-# Publish build artifacts
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/target'
-    artifactName: 'java-client-automation-artifacts'
-    publishLocation: 'pipeline'
-  displayName: 'Publish Build Artifacts'
+  displayName: 'Publish JUnit Test Results'
