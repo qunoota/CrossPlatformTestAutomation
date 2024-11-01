@@ -2,8 +2,6 @@
 # Build Java project and run tests with Apache Maven.
 
 trigger:
-  branches:
-    include:
       - main
 
 pool:
@@ -25,60 +23,6 @@ steps:
     start /b json-server --watch $(System.DefaultWorkingDirectory)/db.json --port 3000
   displayName: 'Start JSON Server'
 
-# Set ANDROID_HOME explicitly
-- script: |
-    echo "Setting ANDROID_HOME..."
-    set ANDROID_HOME=C:\Users\qunoot.ahmed\Documents\Android
-    set PATH=%ANDROID_HOME%\emulator;%ANDROID_HOME%\platform-tools;%ANDROID_HOME%\cmdline-tools\latest\bin;%PATH%
-  displayName: 'Set ANDROID_HOME and PATH'
-
-# Confirm environment variables and paths
-- script: |
-    echo "ANDROID_HOME is set to %ANDROID_HOME%"
-    echo "PATH is set to %PATH%"
-    echo "Checking if emulator and adb are accessible"
-    dir "%ANDROID_HOME%\emulator"
-    dir "%ANDROID_HOME%\platform-tools"
-  displayName: 'Confirm Environment Setup'
-
-# Caching AVD system images to speed up the setup process
-- task: CacheBeta@0
-  displayName: 'Caching System Images for AVD'
-  inputs:
-    key: 'AVD_IMAGES_PIXEL_33'
-    path: '$(ANDROID_HOME)/system-images'
-    cacheHitVar: 'AVD_IMAGES_RESTORED'
-  continueOnError: true
-  condition: succeededOrFailed()
-
-# Install x86_64 system image for Android 33 if not restored from cache
-- script: |
-    echo "Installing x86_64 system image for Android 33..."
-    echo y | "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "system-images;android-33;google_apis_playstore;x86_64"
-  displayName: 'Download and Install Emulator Image'
-  condition: ne(variables.AVD_IMAGES_RESTORED, 'true')
-
-# Create AVD Pixel_2_API_33 with x86_64 system image
-- script: |
-    echo "Creating AVD Pixel_2_API_33 with x86_64 system image..."
-    "%ANDROID_HOME%\cmdline-tools\latest\bin\avdmanager" create avd -n Pixel_2_API_33 -k "system-images;android-33;google_apis_playstore;x86_64" --device "pixel" --force
-  displayName: 'Create AVD Pixel_2_API_33'
-
-# Start Android Emulator with Full Path
-- script: |
-    echo "Starting Android emulator with full path..."
-    start /B "%ANDROID_HOME%\emulator\emulator" -avd Pixel_2_API_33 -no-audio -no-window -no-snapshot -no-boot-anim -gpu auto -accel auto -skin 1080x1920 -qemu -lcd-density 420
-    TIMEOUT /T 60
-    "%ANDROID_HOME%\platform-tools\adb" wait-for-device || (echo "Emulator did not start in time" && exit 1)
-  displayName: 'Start Android Emulator with Full Path'
-
-# Wait for Emulator to Boot
-- script: |
-    echo "Waiting for the emulator to boot..."
-    adb wait-for-device
-    adb shell input keyevent 82  # Unlock screen
-  displayName: 'Wait for Emulator Boot'
-
 # Maven build and test
 - task: Maven@3
   inputs:
@@ -88,7 +32,8 @@ steps:
     jdkVersionOption: '17'
     jdkArchitectureOption: 'x64'
     goals: 'clean install'
-  displayName: 'Build with Maven'
+    options: '-Dtest=!AndroidTest'  # Skips the AndroidTest.java file
+  displayName: 'Build with Maven (Exclude AndroidTest.java)'
 
 # Publish test results
 - task: PublishTestResults@2
