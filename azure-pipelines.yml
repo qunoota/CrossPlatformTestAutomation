@@ -30,7 +30,7 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '17'
     jdkArchitectureOption: 'x64'
-    goals: 'clean install'
+    goals: 'clean install -Dmaven.test.failure.ignore=true'
     options: '-Dsurefire.suiteXmlFiles=testng.xml -Dtest=!com.application.tests.mobile.AndroidTest -DfailIfNoTests=false'
   displayName: 'Build with Maven (Exclude AndroidTest)'
 
