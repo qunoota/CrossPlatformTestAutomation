@@ -13,7 +13,7 @@ steps:
 # Step to install Node.js to support JSON server
 - task: NodeTool@0
   inputs:
-    versionSpec: '16.x'  # Use a compatible Node.js version
+    versionSpec: '16.x'
   displayName: 'Install Node.js'
 
 # Step to install JSON Server globally
@@ -41,11 +41,22 @@ steps:
     dir "%ANDROID_HOME%\platform-tools"
   displayName: 'Confirm Environment Setup'
 
-# Install x86_64 system image for Android 33
+# Caching AVD system images to speed up the setup process
+- task: CacheBeta@0
+  displayName: 'Caching System Images for AVD'
+  inputs:
+    key: 'AVD_IMAGES_PIXEL_33'
+    path: '$(ANDROID_HOME)/system-images'
+    cacheHitVar: 'AVD_IMAGES_RESTORED'
+  continueOnError: true
+  condition: succeededOrFailed()
+
+# Install x86_64 system image for Android 33 if not restored from cache
 - script: |
     echo "Installing x86_64 system image for Android 33..."
     echo y | "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager" "system-images;android-33;google_apis_playstore;x86_64"
-  displayName: 'Install x86_64 System Image'
+  displayName: 'Download and Install Emulator Image'
+  condition: ne(variables.AVD_IMAGES_RESTORED, 'true')
 
 # Create AVD Pixel_2_API_33 with x86_64 system image
 - script: |
@@ -56,7 +67,7 @@ steps:
 # Start Android Emulator with Full Path
 - script: |
     echo "Starting Android emulator with full path..."
-    start /B "%ANDROID_HOME%\emulator\emulator" -avd Pixel_2_API_33 -no-audio -no-window
+    start /B "%ANDROID_HOME%\emulator\emulator" -avd Pixel_2_API_33 -no-audio -no-window -no-snapshot -no-boot-anim -gpu auto -accel auto -skin 1080x1920 -qemu -lcd-density 420
     TIMEOUT /T 60
     "%ANDROID_HOME%\platform-tools\adb" wait-for-device || (echo "Emulator did not start in time" && exit 1)
   displayName: 'Start Android Emulator with Full Path'
@@ -72,9 +83,9 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx1024m'  # Optional: Set memory limit for Maven
+    mavenOptions: '-Xmx1024m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '17'  # Matches the Java version in your pom.xml
+    jdkVersionOption: '17'
     jdkArchitectureOption: 'x64'
     goals: 'clean install'
   displayName: 'Build with Maven'
@@ -82,14 +93,14 @@ steps:
 # Publish test results
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: '**/TEST-*.xml'  # Test result files from Maven Surefire plugin
+    testResultsFiles: '**/TEST-*.xml'
     testRunTitle: 'Java Client Tests'
   displayName: 'Publish Test Results'
 
 # Publish build artifacts
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/target'  # Artifacts from the build
+    targetPath: '$(System.DefaultWorkingDirectory)/target'
     artifactName: 'java-client-automation-artifacts'
     publishLocation: 'pipeline'
   displayName: 'Publish Build Artifacts'
