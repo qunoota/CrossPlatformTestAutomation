@@ -61,7 +61,6 @@ steps:
     "%ANDROID_HOME%\platform-tools\adb" wait-for-device || (echo "Emulator did not start in time" && exit 1)
   displayName: 'Start Android Emulator with Full Path'
 
-
 # Wait for Emulator to Boot
 - script: |
     echo "Waiting for the emulator to boot..."
