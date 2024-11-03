@@ -250,3 +250,24 @@
 2024-10-25 15:45:56 [main] INFO  TestBase:30 - Browser = Chrome
 2024-10-25 15:46:09 [main] INFO  LoginPageTest:48 - Executing test: loginTest
 2024-10-25 15:46:10 [main] INFO  LoginPageTest:69 - Closing browser
+2024-11-03 12:20:33 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2024-11-03 12:20:33 [main] INFO  TestBase:30 - Browser = Chrome
+2024-11-03 12:20:58 [main] INFO  LoginPageTest:33 - Executing test: userRegistrationTest
+2024-11-03 12:27:14 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2024-11-03 12:27:14 [main] INFO  TestBase:30 - Browser = Chrome
+2024-11-03 12:27:39 [main] INFO  LoginPageTest:32 - Executing test: userRegistrationTest
+2024-11-03 12:31:47 [main] INFO  LoginPageTest:29 - Initializing web driver and launching the browser
+2024-11-03 12:31:47 [main] INFO  TestBase:30 - Browser = Chrome
+2024-11-03 12:32:04 [main] INFO  LoginPageTest:36 - Executing test: userRegistrationTest
+2024-11-03 12:35:55 [main] INFO  LoginPageTest:29 - Initializing web driver and launching the browser
+2024-11-03 12:35:55 [main] INFO  TestBase:30 - Browser = Chrome
+2024-11-03 12:36:04 [main] INFO  LoginPageTest:36 - Executing test: userRegistrationTest
+2024-11-03 12:37:59 [main] INFO  LoginPageTest:26 - Initializing web driver and launching the browser
+2024-11-03 12:37:59 [main] INFO  TestBase:30 - Browser = Chrome
+2024-11-03 12:38:34 [main] INFO  LoginPageTest:33 - Executing test: userRegistrationTest
+2024-11-03 12:38:35 [main] INFO  LoginPageTest:49 - Closing browser
+2024-11-03 12:39:43 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2024-11-03 12:39:43 [main] INFO  TestBase:30 - Browser = Chrome
+2024-11-03 12:40:33 [main] INFO  LoginPageTest:28 - Navigate to the registration page
+2024-11-03 12:40:34 [main] INFO  LoginPageTest:34 - Executing test: userRegistrationTest
+2024-11-03 12:40:34 [main] INFO  LoginPageTest:50 - Closing browser

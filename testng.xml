@@ -21,4 +21,9 @@
             <class name="com.application.tests.api.TestsOnLocalAPI"/>
         </classes>
     </test>
+    <test name="RegisterPageTest">
+        <classes>
+            <class name="com.application.tests.web.RegisterPageTest"/>
+        </classes>
+    </test>
 </suite>
