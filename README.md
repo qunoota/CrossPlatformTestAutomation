@@ -33,6 +33,10 @@ The CrossPlatformAutomation framework is designed to integrate web, mobile, and 
 - **BrowserStack**: For iOS mobile testing.
 - **Rest Assured and Faker Library**: For API testing.
 - **Test Data Json File**: For test data management.
+- **Logging**: Log4j API for making it easier to track test execution and debug failures.
+
+## Reporting
+- Extent Reporting Framework
 
 ## Getting Started
 

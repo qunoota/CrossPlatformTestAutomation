@@ -271,3 +271,47 @@
 2024-11-03 12:40:33 [main] INFO  LoginPageTest:28 - Navigate to the registration page
 2024-11-03 12:40:34 [main] INFO  LoginPageTest:34 - Executing test: userRegistrationTest
 2024-11-03 12:40:34 [main] INFO  LoginPageTest:50 - Closing browser
+2024-12-16 15:17:05 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2024-12-16 15:17:05 [main] INFO  TestBase:30 - Browser = Chrome
+2024-12-16 15:17:27 [main] INFO  LoginPageTest:28 - Navigate to the registration page
+2024-12-16 15:17:27 [main] INFO  LoginPageTest:34 - Executing test: userRegistrationTest
+2024-12-16 15:17:28 [main] INFO  LoginPageTest:50 - Closing browser
+2024-12-16 22:35:17 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2024-12-16 22:35:17 [main] INFO  TestBase:30 - Browser = Chrome
+2024-12-16 22:35:33 [main] INFO  LoginPageTest:28 - Navigate to the registration page
+2024-12-16 22:35:34 [main] INFO  LoginPageTest:34 - Executing test: userRegistrationTest
+2024-12-16 22:35:35 [main] INFO  LoginPageTest:50 - Closing browser
+2024-12-16 22:45:20 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2024-12-16 22:45:20 [main] INFO  TestBase:58 - Driver initialization successful
+2024-12-16 22:45:42 [main] ERROR AndroidTest:25 - Driver initialization failed
+2024-12-16 22:48:00 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2024-12-16 22:48:01 [main] INFO  TestBase:58 - Driver initialization successful
+2024-12-16 22:48:24 [main] ERROR AndroidTest:25 - Driver initialization failed
+2024-12-16 22:53:37 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2024-12-16 22:53:37 [main] INFO  TestBase:58 - Driver initialization successful
+2024-12-16 22:53:38 [main] ERROR AndroidTest:25 - Driver initialization failed
+2024-12-16 22:54:22 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2024-12-16 22:54:22 [main] INFO  TestBase:58 - Driver initialization successful
+2024-12-16 22:54:44 [main] ERROR AndroidTest:25 - Driver initialization failed
+2024-12-16 22:56:41 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2024-12-16 22:56:41 [main] INFO  TestBase:58 - Driver initialization successful
+2024-12-16 22:57:02 [main] ERROR AndroidTest:25 - Driver initialization failed
+2024-12-16 22:59:52 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2024-12-16 22:59:52 [main] INFO  TestBase:58 - Driver initialization successful
+2024-12-16 23:00:12 [main] ERROR AndroidTest:25 - Driver initialization failed
+2024-12-16 23:16:47 [main] INFO  TestsOnLocalAPI:33 - Starting GET request to retrieve users.
+2024-12-16 23:16:48 [main] INFO  TestsOnLocalAPI:43 - GET request successful. Status code 200.
+2024-12-16 23:16:49 [main] INFO  TestsOnLocalAPI:50 - Starting POST request to create a new user.
+2024-12-16 23:16:49 [main] INFO  TestsOnLocalAPI:73 - POST request successful. User ID created: 1
+2024-12-16 23:16:49 [main] INFO  TestsOnLocalAPI:80 - Starting PUT request to update user with ID: 1
+2024-12-16 23:16:49 [main] INFO  TestsOnLocalAPI:101 - PUT request successful. User ID: 1 updated.
+2024-12-16 23:16:49 [main] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: 1
+2024-12-16 23:16:49 [main] INFO  TestsOnLocalAPI:121 - DELETE request successful. User ID: 1 deleted.
+2024-12-16 23:24:28 [main] INFO  TestsOnLocalAPI:33 - Starting GET request to retrieve users.
+2024-12-16 23:24:30 [main] INFO  TestsOnLocalAPI:43 - GET request successful. Status code 200.
+2024-12-16 23:24:30 [main] INFO  TestsOnLocalAPI:50 - Starting POST request to create a new user.
+2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:73 - POST request successful. User ID created: 1
+2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:80 - Starting PUT request to update user with ID: 1
+2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:101 - PUT request successful. User ID: 1 updated.
+2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: 1
+2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:121 - DELETE request successful. User ID: 1 deleted.
