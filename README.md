@@ -35,6 +35,9 @@ The CrossPlatformAutomation framework is designed to integrate web, mobile, and 
 - **Test Data Json File**: For test data management.
 - **Logging**: Log4j API for making it easier to track test execution and debug failures.
 
+## Data Structures
+The framework uses Java’s Hashtable<String, String> to dynamically fill forms such as reservation.
+
 ## Reporting
 - Extent Reporting Framework
 

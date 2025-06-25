@@ -26,4 +26,9 @@
             <class name="com.application.tests.web.RegisterPageTest"/>
         </classes>
     </test>
+    <test name="ReservationPageTests">
+        <classes>
+            <class name="com.application.tests.web.ReservationTest"/>
+        </classes>
+    </test>
 </suite>

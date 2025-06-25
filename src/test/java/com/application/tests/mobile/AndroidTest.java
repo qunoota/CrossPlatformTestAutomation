@@ -9,7 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import reporting.ExtentManager;
 import com.aventstack.extentreports.ExtentTest;
-import java.util.concurrent.TimeUnit;
+
+import java.time.Duration;
 
 public class AndroidTest extends TestBase {
     ProductsPage productsPage;
@@ -26,7 +27,7 @@ public class AndroidTest extends TestBase {
             test.fail("Driver initialization failed"); // Log failure in ExtentReport
             throw new RuntimeException("Driver initialization failed");
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         logger.info("Pass the initialized driver to the ProductsPage constructor");
         productsPage = new ProductsPage(driver);
     }

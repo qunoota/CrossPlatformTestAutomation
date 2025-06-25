@@ -315,3 +315,135 @@
 2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:101 - PUT request successful. User ID: 1 updated.
 2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: 1
 2024-12-16 23:24:31 [main] INFO  TestsOnLocalAPI:121 - DELETE request successful. User ID: 1 deleted.
+2025-06-24 19:15:20 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:18:01 [main] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-24 19:18:01 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:24:18 [main] INFO  TestsOnLocalAPI:33 - Starting GET request to retrieve users.
+2025-06-24 19:24:20 [main] INFO  TestsOnLocalAPI:50 - Starting POST request to create a new user.
+2025-06-24 19:24:20 [main] INFO  TestsOnLocalAPI:80 - Starting PUT request to update user with ID: null
+2025-06-24 19:24:20 [main] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: null
+2025-06-24 19:24:20 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-24 19:24:20 [main] INFO  TestBase:58 - Driver initialization successful
+2025-06-24 19:24:21 [main] ERROR AndroidTest:25 - Driver initialization failed
+2025-06-24 19:24:21 [main] INFO  LoginPageTest:22 - Initializing Browserstack Driver
+2025-06-24 19:24:30 [main] INFO  LoginPageTest:28 - Visiting website on BrowserStack for iOS
+2025-06-24 19:24:43 [main] INFO  LoginPageTest:41 - Browser closed
+2025-06-24 19:24:43 [main] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-24 19:24:43 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:24:46 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2025-06-24 19:24:46 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:24:48 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:26:31 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:35:58 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:36:52 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:38:46 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:42:51 [main] INFO  TestsOnLocalAPI:33 - Starting GET request to retrieve users.
+2025-06-24 19:42:52 [main] INFO  TestsOnLocalAPI:50 - Starting POST request to create a new user.
+2025-06-24 19:42:52 [main] INFO  TestsOnLocalAPI:80 - Starting PUT request to update user with ID: null
+2025-06-24 19:42:52 [main] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: null
+2025-06-24 19:42:52 [main] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-24 19:42:52 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:42:55 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2025-06-24 19:42:55 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-24 19:42:57 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-25 11:17:16 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-25 11:43:47 [main] INFO  TestBase:30 - Browser = Chrome
+2025-06-25 11:47:13 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 11:54:14 [main] INFO  TestsOnLocalAPI:33 - Starting GET request to retrieve users.
+2025-06-25 11:54:16 [main] INFO  TestsOnLocalAPI:50 - Starting POST request to create a new user.
+2025-06-25 11:54:16 [main] INFO  TestsOnLocalAPI:80 - Starting PUT request to update user with ID: null
+2025-06-25 11:54:16 [main] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: null
+2025-06-25 11:54:16 [main] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 11:54:16 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 11:54:30 [main] INFO  LoginPageTest:34 - Executing test: loginPageTitleTest
+2025-06-25 11:54:30 [main] INFO  LoginPageTest:38 - Login page title: DEMOQA
+2025-06-25 11:54:30 [main] INFO  LoginPageTest:42 - Title validation passed
+2025-06-25 11:54:30 [main] INFO  LoginPageTest:69 - Closing browser
+2025-06-25 11:54:31 [main] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 11:54:31 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 11:54:37 [main] INFO  LoginPageTest:48 - Executing test: loginTest
+2025-06-25 11:54:38 [main] INFO  LoginPageTest:69 - Closing browser
+2025-06-25 11:54:38 [main] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2025-06-25 11:54:38 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 11:54:45 [main] INFO  LoginPageTest:28 - Navigate to the registration page
+2025-06-25 11:54:48 [main] INFO  LoginPageTest:34 - Executing test: userRegistrationTest
+2025-06-25 11:54:49 [main] INFO  LoginPageTest:50 - Closing browser
+2025-06-25 11:54:49 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 11:56:18 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 11:56:54 [main] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 11:56:54 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 12:02:43 [TestNG-test-AndroidTests-1] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 12:02:43 [TestNG-test-AndroidTests-1] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 12:02:46 [TestNG-tests-1] INFO  TestsOnLocalAPI:33 - Starting GET request to retrieve users.
+2025-06-25 12:02:47 [TestNG-tests-1] INFO  TestsOnLocalAPI:50 - Starting POST request to create a new user.
+2025-06-25 12:02:48 [TestNG-tests-1] INFO  TestsOnLocalAPI:80 - Starting PUT request to update user with ID: null
+2025-06-25 12:02:48 [TestNG-tests-1] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: null
+2025-06-25 12:02:48 [TestNG-tests-1] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2025-06-25 12:02:48 [TestNG-tests-1] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 12:08:31 [TestNG-test-AndroidTests-1] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 12:08:31 [TestNG-test-AndroidTests-1] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 12:09:55 [TestNG-test-AndroidTests-1] INFO  LoginPageTest:34 - Executing test: loginPageTitleTest
+2025-06-25 12:09:55 [TestNG-test-AndroidTests-1] INFO  LoginPageTest:69 - Closing browser
+2025-06-25 12:09:55 [TestNG-test-AndroidTests-1] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 12:09:55 [TestNG-test-AndroidTests-1] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 12:10:09 [TestNG-test-AndroidTests-1] INFO  LoginPageTest:48 - Executing test: loginTest
+2025-06-25 12:10:09 [TestNG-test-AndroidTests-1] INFO  LoginPageTest:69 - Closing browser
+2025-06-25 12:10:34 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 12:13:12 [main] INFO  TestBase:31 - Browser = Chrome
+2025-06-25 13:25:41 [TestNG-test-AndroidTests-1] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 13:25:41 [TestNG-test-AndroidTests-1] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 13:26:49 [TestNG-test-AndroidTests-1] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 13:26:49 [TestNG-test-AndroidTests-1] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 13:27:10 [TestNG-test-AndroidTests-1] ERROR AndroidTest:25 - Driver initialization failed
+2025-06-25 13:27:10 [TestNG-tests-1] INFO  LoginPageTest:22 - Initializing Browserstack Driver
+2025-06-25 13:27:19 [TestNG-tests-1] INFO  LoginPageTest:28 - Visiting website on BrowserStack for iOS
+2025-06-25 13:27:32 [TestNG-tests-1] INFO  LoginPageTest:41 - Browser closed
+2025-06-25 13:27:32 [TestNG-tests-1] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 13:27:32 [TestNG-tests-1] INFO  TestBase:32 - Browser = Chrome
+2025-06-25 13:27:39 [TestNG-tests-1] INFO  LoginPageTest:34 - Executing test: loginPageTitleTest
+2025-06-25 13:27:39 [TestNG-tests-1] INFO  LoginPageTest:38 - Login page title: DEMOQA
+2025-06-25 13:27:39 [TestNG-tests-1] INFO  LoginPageTest:42 - Title validation passed
+2025-06-25 13:27:39 [TestNG-tests-1] INFO  LoginPageTest:69 - Closing browser
+2025-06-25 13:27:39 [TestNG-tests-1] INFO  LoginPageTest:27 - Initializing web driver and launching the browser
+2025-06-25 13:27:39 [TestNG-tests-1] INFO  TestBase:32 - Browser = Chrome
+2025-06-25 13:27:47 [TestNG-tests-1] INFO  LoginPageTest:48 - Executing test: loginTest
+2025-06-25 13:27:47 [TestNG-tests-1] INFO  LoginPageTest:53 - Browser window size set to: (1080, 750)
+2025-06-25 13:27:47 [TestNG-tests-1] INFO  LoginPageTest:59 - Logging in with email: John.alan98
+2025-06-25 13:27:48 [TestNG-tests-1] INFO  LoginPageTest:63 - Login successful, navigated to profile page
+2025-06-25 13:27:48 [TestNG-tests-1] INFO  LoginPageTest:69 - Closing browser
+2025-06-25 13:27:48 [TestNG-tests-1] INFO  TestsOnLocalAPI:33 - Starting GET request to retrieve users.
+2025-06-25 13:27:49 [TestNG-tests-1] INFO  TestsOnLocalAPI:43 - GET request successful. Status code 200.
+2025-06-25 13:27:49 [TestNG-tests-1] INFO  TestsOnLocalAPI:50 - Starting POST request to create a new user.
+2025-06-25 13:27:50 [TestNG-tests-1] INFO  TestsOnLocalAPI:73 - POST request successful. User ID created: 1
+2025-06-25 13:27:50 [TestNG-tests-1] INFO  TestsOnLocalAPI:80 - Starting PUT request to update user with ID: 1
+2025-06-25 13:27:50 [TestNG-tests-1] INFO  TestsOnLocalAPI:101 - PUT request successful. User ID: 1 updated.
+2025-06-25 13:27:50 [TestNG-tests-1] INFO  TestsOnLocalAPI:108 - Starting DELETE request to remove user with ID: 1
+2025-06-25 13:27:50 [TestNG-tests-1] INFO  TestsOnLocalAPI:121 - DELETE request successful. User ID: 1 deleted.
+2025-06-25 13:27:50 [TestNG-tests-1] INFO  LoginPageTest:25 - Initializing web driver and launching the browser
+2025-06-25 13:27:50 [TestNG-tests-1] INFO  TestBase:32 - Browser = Chrome
+2025-06-25 13:27:56 [TestNG-tests-1] INFO  LoginPageTest:28 - Navigate to the registration page
+2025-06-25 13:27:57 [TestNG-tests-1] INFO  LoginPageTest:34 - Executing test: userRegistrationTest
+2025-06-25 13:27:59 [TestNG-tests-1] INFO  LoginPageTest:50 - Closing browser
+2025-06-25 13:41:06 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 13:41:06 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 13:41:28 [main] ERROR AndroidTest:25 - Driver initialization failed
+2025-06-25 14:02:21 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 14:02:21 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 15:16:59 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 15:16:59 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 15:18:48 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 15:18:48 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 19:12:38 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 19:12:39 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 19:16:19 [main] INFO  AndroidTest:22 - Initializing Android Driver
+2025-06-25 19:16:19 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 19:20:52 [main] INFO  AndroidTest:24 - Initializing Android Driver
+2025-06-25 19:20:52 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 19:21:05 [main] INFO  AndroidTest:32 - Pass the initialized driver to the ProductsPage constructor
+2025-06-25 19:21:05 [main] INFO  AndroidTest:38 - Validating product page heading
+2025-06-25 19:21:06 [main] INFO  AndroidTest:43 - Heading validation passed
+2025-06-25 19:21:06 [main] INFO  AndroidTest:24 - Initializing Android Driver
+2025-06-25 19:21:06 [main] INFO  TestBase:68 - Driver initialization successful
+2025-06-25 19:21:17 [main] INFO  AndroidTest:32 - Pass the initialized driver to the ProductsPage constructor
+2025-06-25 19:21:17 [main] INFO  AndroidTest:49 - Navigating to the first product on the page
+2025-06-25 19:21:24 [main] INFO  AndroidTest:54 - Item validation passed

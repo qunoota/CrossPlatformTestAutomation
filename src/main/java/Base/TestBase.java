@@ -1,6 +1,7 @@
 package Base;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.options.XCUITestOptions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -23,7 +24,8 @@ public class TestBase {
     public static void webInitialization() {
         confReader = new configReader();
         prop = confReader.prop;
-        String browserName = prop.getProperty("BROWSER");
+        //String browserName = prop.getProperty("BROWSER");
+        String browserName = confReader.getBrowserName();
 
         switch (browserName.toUpperCase()) {
             case "CHROME":
@@ -44,6 +46,14 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.get("https://demoqa.com/login");
+    }
+
+    public static void webReservation() {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        driver.get("https://reserve-today.web.app/");
+        driver.findElement(By.id("reserve-navbar")).click();
     }
 
     public static WebDriver initializeAndroidDriver() {
