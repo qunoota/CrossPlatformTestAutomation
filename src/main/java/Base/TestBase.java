@@ -24,7 +24,6 @@ public class TestBase {
     public static void webInitialization() {
         confReader = new configReader();
         prop = confReader.prop;
-        //String browserName = prop.getProperty("BROWSER");
         String browserName = confReader.getBrowserName();
 
         switch (browserName.toUpperCase()) {
